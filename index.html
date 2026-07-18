@@ -175,6 +175,35 @@
             .app-info { flex-direction: column; margin-bottom: 15px; text-align: center; }
             .app-icon { margin-right: 0; margin-bottom: 10px; }
             .btn-download { width: 100%; justify-content: center; }
+        } 
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-linkedin {
+            background: #0077b5; /* Màu chuẩn LinkedIn */
+            color: #ffffff;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 20px; /* Bo tròn dạng viên thuốc */
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,119,181,0.2);
+        }
+        .btn-linkedin:hover {
+            background: #005582;
+            transform: translateY(-1px);
+        }
+        .linkedin-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 6px;
+            fill: currentColor;
         }
     </style>
 </head>
@@ -185,7 +214,16 @@
     <div class="profile-header">
         <img src="https://avatars.githubusercontent.com/u/29915177?v=4" alt="Ly Hoang Vinh" class="avatar">
         <h1>Ly Hoang Vinh</h1>
-        <div class="subtitle">Android Developer</div>
+        <div class="subtitle">Android Developer</div> 
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/" class="btn-linkedin" target="_blank">
+                <!-- Icon LinkedIn dạng SVG vẽ trực tiếp -->
+                <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                Connect on LinkedIn
+            </a>
+        </div>
     </div>
     
     <p class="bio">Welcome to my official developer homepage. I specialize in building high-quality, user-friendly mobile applications for Android devices.</p>
