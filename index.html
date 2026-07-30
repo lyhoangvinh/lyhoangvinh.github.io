@@ -1,290 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ly Hoang Vinh | Mobile App Developer</title>
-    <style>
-        body { 
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; 
-            background-color: #f0f2f5;
-            color: #1c1e21; 
-            margin: 0; 
-            padding: 20px 0;
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            min-height: 100vh; 
-            text-align: center; 
-        }
-
-        .container { 
-            background: #ffffff; 
-            padding: 50px 40px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); 
-            max-width: 600px; 
-            width: 90%; 
-        }
-
-        .profile-header {
-            margin-bottom: 30px;
-        }
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 4px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-        }
-
-        h1 { 
-            color: #0d6efd; 
-            margin: 0 0 5px 0; 
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-        .subtitle { 
-            color: #6c757d; 
-            font-size: 1rem; 
-            margin-top: 0;
-            margin-bottom: 0;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 600;
-        }
-        .bio { 
-            color: #495057; 
-            font-size: 1.05rem; 
-            line-height: 1.7; 
-            margin: 30px 0;
-            padding: 0 10px;
-        }
-        .section-title {
-            font-size: 1.3rem;
-            color: #212529;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            text-align: left;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-        }
-        .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 24px;
-            background-color: #0d6efd;
-            margin-right: 12px;
-            border-radius: 3px;
-        }
-        .apps-list { 
-            margin: 0; 
-            padding: 0; 
-            list-style: none; 
-        }
-        .app-item { 
-            background: #ffffff; 
-            padding: 20px; 
-            margin: 15px 0; 
-            border-radius: 12px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border: 1px solid #e9ecef;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .app-item:hover {
-            transform: translateY(-3px); 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        .app-info {
-            display: flex;
-            align-items: center;
-            text-align: left;
-        }
-        .app-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            margin-right: 15px;
-            object-fit: cover;
-        }
-        .app-name {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: #212529;
-        }
-
-        /* Nút Download */
-        .btn-download { 
-            background: #198754; 
-            color: #ffffff; 
-            padding: 10px 20px; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-size: 0.9rem; 
-            font-weight: 600;
-            transition: background 0.2s ease;
-            display: flex;
-            align-items: center;
-            white-space: nowrap; 
-        }
-        .btn-download:hover {
-            background: #157347;
-        }
-     
-        .play-icon {
-            margin-right: 8px;
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Footer */
-        .divider {
-            border: 0;
-            height: 1px;
-            background: #dee2e6;
-            margin: 40px 0 30px 0;
-        }
-        .footer { 
-            font-size: 0.9rem; 
-            color: #6c757d; 
-            line-height: 1.6;
-        }
-        .footer a { 
-            color: #0d6efd; 
-            text-decoration: none; 
-            font-weight: 500;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 576px) {
-            .container { padding: 30px 20px; }
-            h1 { font-size: 1.8rem; }
-            .app-item { flex-direction: column; text-align: center; }
-            .app-info { flex-direction: column; margin-bottom: 15px; text-align: center; }
-            .app-icon { margin-right: 0; margin-bottom: 10px; }
-            .btn-download { width: 100%; justify-content: center; }
-        } 
-        .social-links {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        .btn-linkedin {
-            background: #0077b5;
-            color: #ffffff;
-            padding: 8px 16px;
-            text-decoration: none;
-            border-radius: 20px; 
-            font-size: 0.85rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            transition: background 0.2s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,119,181,0.2);
-        }
-        .btn-linkedin:hover {
-            background: #005582;
-            transform: translateY(-1px);
-        }
-        .linkedin-icon {
-            width: 16px;
-            height: 16px;
-            margin-right: 6px;
-            fill: currentColor;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">>
-    <div class="profile-header">
-        <img src="https://avatars.githubusercontent.com/u/29915177?v=4" alt="Ly Hoang Vinh" class="avatar">
-        <h1>Ly Hoang Vinh</h1>
-        <div class="subtitle">Android Developer</div> 
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/" class="btn-linkedin" target="_blank">
-    
-                <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                Connect on LinkedIn
-            </a>
-        </div>
-    </div>
-    
-    <p class="bio">Welcome to my official developer homepage. I specialize in building high-quality, user-friendly mobile applications for Android devices.</p>
-    
-    <div class="section-title">My Applications</div>
-    
-    <ul class="apps-list">
-        <!-- App 1 -->
-        <li class="app-item">
-            <div class="app-info">        
-                <img src="https://play-lh.googleusercontent.com/x9tXDfbhps7ZLgUpbVXCxWVMP47L_OOS5F8lDAW7u9HI3xF1O10r9h_hByrzL_yplS9n8afxw8G6-y1mWGjOwA=w240-h480-rw" alt="Freaking Math Plus Icon" class="app-icon">
-                <span class="app-name">Freaking Math Plus</span>
-            </div>
-            <a href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.gamemath" class="btn-download" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="play-icon">
-                Get it on Google Play
-            </a>
-        </li>
-
-        <!-- App 2 -->
-        <li class="app-item">
-            <div class="app-info">
-                <img src="https://play-lh.googleusercontent.com/7hcUIS-ViNjuE0Ynwz0vNPu9xcotZO3cjT8H-RTV40I1Lsp7uKFBTSQFYrmTHXeghX9LX1FBusOVGqM3OhSrtQ=w240-h480-rw" alt="Scan Flat Icon" class="app-icon">
-                <span class="app-name">Scan Flat - PDF & E-Signature</span>
-            </div>
-            <a href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.scan" class="btn-download" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="play-icon">
-                Get it on Google Play
-            </a>
-        </li>
-
-        <!-- App 3 -->
-        <li class="app-item">
-            <div class="app-info">
-                <img src="https://play-lh.googleusercontent.com/LlEa1QSlc_XEcT6gfMdSKUgdPsuqD8qfAg8nWpEYOmehZDJZCIaRGHNpb4OGVJbE0k3HixsNaz29VY9XwIk61A=w240-h480-rw" alt="QR Code Scanner & Generator Icon" class="app-icon">
-                <span class="app-name">QR Code Scanner & Generator</span>
-            </div>
-            <a href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.qrbarcodestudio" class="btn-download" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="play-icon">
-                Get it on Google Play
-            </a>
-        </li>
-
-        <!-- App 4 -->
-        <li class="app-item">
-            <div class="app-info">
-                <img src="https://play-lh.googleusercontent.com/xloc1zhO4YZjEYtxjjjgN13vupogovXrixCHSvBefT5NU9RCui2fxAKPQMcmZErgkZDHx1JCgN0aYduQos3aqw=w240-h480-rw" alt="Hex to Text Icon" class="app-icon">
-                <span class="app-name">Hex to Text Converter</span>
-            </div>
-            <a href="https://play.google.com/store/apps/details?id=com.vinh.hextotext" class="btn-download" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" class="play-icon">
-                Get it on Google Play
-            </a>
-        </li>
-    </ul>
-
-    <div class="divider"></div>
-
-    <div class="footer">
-        <p>Contact: <a href="mailto:vinh270795@gmail.com">vinh270795@gmail.com</a></p>
-        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-        <p style="font-size: 0.8rem; margin-top: 20px; color: #adb5bd;">&copy; 2026 Ly Hoang Vinh. All rights reserved.</p>
-    </div>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ly Hoang Vinh | Android Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:#f7f8fc;color:#1b1b1f}
+.wrap{max-width:980px;margin:auto;padding:56px 20px}
+.hero{text-align:center;padding:40px 0 60px}
+.avatar{width:120px;height:120px;border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+h1{font-size:44px;margin:20px 0 8px}.sub{color:#666}.bio{max-width:620px;margin:20px auto;color:#555;line-height:1.7}
+.links a{display:inline-block;margin:8px;padding:12px 20px;border-radius:999px;text-decoration:none;background:#6750A4;color:#fff}
+h2{margin:10px 0 24px;font-size:30px}
+.grid{display:grid;gap:20px}
+.card{background:#fff;border-radius:28px;padding:22px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:.25s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08)}
+.left{display:flex;gap:18px;align-items:center}
+.icon{width:72px;height:72px;border-radius:18px}
+.name{font-size:22px;font-weight:700}
+.desc{color:#666;margin:6px 0}
+.chips span{display:inline-block;background:#ede7f6;color:#6750A4;border-radius:999px;padding:5px 10px;font-size:12px;margin:4px 6px 0 0}
+.play{background:#6750A4;color:#fff;text-decoration:none;padding:12px 18px;border-radius:999px}
+footer{text-align:center;color:#777;padding:50px 0}
+@media(max-width:700px){.card{flex-direction:column;align-items:flex-start}.play{margin-top:18px;width:100%;text-align:center}h1{font-size:34px}}
+</style></head><body>
+<div class="wrap">
+<section class="hero">
+<img class="avatar" src="https://avatars.githubusercontent.com/u/29915177?v=4">
+<h1>Ly Hoang Vinh</h1>
+<div class="sub">Android Engineer</div>
+<p class="bio">Building polished Android applications focused on performance, usability and Material Design.</p>
+<div class="links">
+<a href="https://github.com/LyHoangVinh">GitHub</a>
+<a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/">LinkedIn</a>
 </div>
-
-</body>
-</html>
+</section>
+<h2>Published Apps</h2>
+<div class="grid">
+<div class="card"><div class="left"><img class="icon" src="https://play-lh.googleusercontent.com/7hcUIS-ViNjuE0Ynwz0vNPu9xcotZO3cjT8H-RTV40I1Lsp7uKFBTSQFYrmTHXeghX9LX1FBusOVGqM3OhSrtQ=w240-h480-rw"><div><div class="name">Scan Flat - PDF & E‑Signature</div><div class="desc">Document Scanner</div><div class="chips"><span>OCR</span><span>PDF</span><span>Signature</span></div></div></div><a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.scan">Google Play</a></div><div class="card"><div class="left"><img class="icon" src="https://play-lh.googleusercontent.com/LlEa1QSlc_XEcT6gfMdSKUgdPsuqD8qfAg8nWpEYOmehZDJZCIaRGHNpb4OGVJbE0k3HixsNaz29VY9XwIk61A=w240-h480-rw"><div><div class="name">QR Code Scanner & Generator</div><div class="desc">Scan QR & Barcode</div><div class="chips"><span>QR</span><span>Barcode</span><span>Generator</span></div></div></div><a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.qrbarcodestudio">Google Play</a></div><div class="card"><div class="left"><img class="icon" src="https://play-lh.googleusercontent.com/xloc1zhO4YZjEYtxjjjgN13vupogovXrixCHSvBefT5NU9RCui2fxAKPQMcmZErgkZDHx1JCgN0aYduQos3aqw=w240-h480-rw"><div><div class="name">Hex to Text Converter</div><div class="desc">Developer Utility</div><div class="chips"><span>Hex</span><span>ASCII</span><span>UTF</span></div></div></div><a class="play" href="https://play.google.com/store/apps/details?id=com.vinh.hextotext">Google Play</a></div><div class="card"><div class="left"><img class="icon" src="https://play-lh.googleusercontent.com/x9tXDfbhps7ZLgUpbVXCxWVMP47L_OOS5F8lDAW7u9HI3xF1O10r9h_hByrzL_yplS9n8afxw8G6-y1mWGjOwA=w240-h480-rw"><div><div class="name">Freaking Math Plus</div><div class="desc">Brain Game</div><div class="chips"><span>Game</span><span>Math</span><span>Puzzle</span></div></div></div><a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.gamemath">Google Play</a></div></div><footer>Contact: vinh270795@gmail.com</footer></div></body></html>
