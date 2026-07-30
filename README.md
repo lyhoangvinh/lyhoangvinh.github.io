@@ -10,7 +10,7 @@ This repository hosts the official landing page and developer configurations for
 * **Freaking Math Plus** - A fast-paced math puzzle game available on Google Play.
 * **Scan Flat - PDF & E-Signature** - Scan any document with your phone camera and instantly get a clean, high-quality PDF. No account required. No cloud upload. Everything stays on your device.
 * ** Hex to Text Converter** - Convert Hex to Text and Text to Hex an extremely easy.
-
+* ** QR & Barcode Studio** - Scan, Create & Customize
 ## 📬 Contact
 If you have any questions, feedback, or support inquiries, feel free to reach out via email.
 
