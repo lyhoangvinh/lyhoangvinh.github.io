@@ -36,11 +36,30 @@
         .left{display:flex;gap:20px;align-items:center}
         .icon{width:88px;height:88px;border-radius:20px;box-shadow: 0 4px 12px rgba(0,0,0,0.05)}
         .name{font-size:20px;font-weight:700;margin-bottom:4px}
-        .desc{color:#666;font-size:15px;margin-bottom:12px}
+        .desc{color:#666;font-size:15px;margin-bottom:8px}
+        .stats{display:flex;gap:14px;margin-bottom:12px;font-size:13px;font-weight:600;color:#555;align-items:center}
+        .stats span{display:flex;align-items:center;gap:4px}
+        .stats i.fa-star{color:#FFB300}
+        .stats i.fa-download{color:#00C853}
         .chips{display:flex;flex-wrap:wrap;gap:6px}
         .chips span{background:var(--primary-container);color:var(--primary);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.02em}
         .play{background:var(--primary-container);color:var(--primary);text-decoration:none;padding:12px 20px;border-radius:16px;font-weight:700;font-size:14px;transition:0.2s}
         .play:hover{background:var(--primary);color:#fff}
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            right: -30px;
+            background: #FFD700;
+            color: #000;
+            padding: 4px 40px;
+            font-size: 10px;
+            font-weight: 800;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
 
         .footer{margin-top:120px;padding:60px 0;text-align:center;border-top:1px solid var(--outline-variant)}
         .footer-content{display:flex;flex-direction:column;align-items:center;gap:24px}
@@ -75,60 +94,16 @@
     <h2>Published Apps</h2>
     <div class="grid">
         <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/UYn4L3aAoSXjlMtuxBHPKiMQnv8FWBDNGvKri1Wl-W9qut8USYJL1T2zuKbjFl92IgtwPSsGzp3Vi5CEEblwK-Q=w240-h480-rw">
-                <div>
-                    <div class="name">BlinkStretch 20-20-20 Break</div>
-                    <div class="desc">Protect your eyes and collect cute cats</div>
-                    <div class="chips"><span>Productivity</span><span>Health</span><span>Eyes</span></div>
-                </div>
-            </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.blinkstretch">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/xmAA029pfdV70j5b1MU6B1KzT71cdiCkyve-DhBfqo91aWKeU8NAV_O0AL_q7aNmNtrAdUsLeRyYbCg3lpJk=w240-h480-rw">
-                <div>
-                    <div class="name">PureSip: Water Tracker</div>
-                    <div class="desc">Hydration companion for healthy habits</div>
-                    <div class="chips"><span>Health</span><span>Water</span><span>Tracker</span></div>
-                </div>
-            </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.watertracker">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/7hcUIS-ViNjuE0Ynwz0vNPu9xcotZO3cjT8H-RTV40I1Lsp7uKFBTSQFYrmTHXeghX9LX1FBusOVGqM3OhSrtQ=w240-h480-rw">
-                <div>
-                    <div class="name">Scan Flat - PDF & E‑Signature</div>
-                    <div class="desc">Document Scanner</div>
-                    <div class="chips"><span>OCR</span><span>PDF</span><span>Signature</span></div>
-                </div>
-            </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.scan">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/LlEa1QSlc_XEcT6gfMdSKUgdPsuqD8qfAg8nWpEYOmehZDJZCIaRGHNpb4OGVJbE0k3HixsNaz29VY9XwIk61A=w240-h480-rw">
-                <div>
-                    <div class="name">QR Code Scanner & Generator</div>
-                    <div class="desc">Scan QR & Barcode</div>
-                    <div class="chips"><span>QR</span><span>Barcode</span><span>Generator</span>
-                    </div>
-                </div>
-            </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.qrbarcodestudio">Google
-                Play</a></div>
-        <div class="card">
+            <div class="badge">Popular</div>
             <div class="left"><img class="icon"
                                    src="https://play-lh.googleusercontent.com/xloc1zhO4YZjEYtxjjjgN13vupogovXrixCHSvBefT5NU9RCui2fxAKPQMcmZErgkZDHx1JCgN0aYduQos3aqw=w240-h480-rw">
                 <div>
                     <div class="name">Hex to Text Converter</div>
                     <div class="desc">Developer Utility</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> 5.0</span>
+                        <span><i class="fa-solid fa-download"></i> 10K+</span>
+                    </div>
                     <div class="chips"><span>Hex</span><span>ASCII</span><span>UTF</span></div>
                 </div>
             </div>
@@ -140,11 +115,80 @@
                 <div>
                     <div class="name">Freaking Math Plus</div>
                     <div class="desc">Brain Game</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> 4.8</span>
+                        <span><i class="fa-solid fa-download"></i> 100+</span>
+                    </div>
                     <div class="chips"><span>Game</span><span>Math</span><span>Puzzle</span></div>
                 </div>
             </div>
             <a class="play"
                href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.gamemath">Google
+                Play</a></div>
+        <div class="card">
+            <div class="left"><img class="icon"
+                                   src="https://play-lh.googleusercontent.com/7hcUIS-ViNjuE0Ynwz0vNPu9xcotZO3cjT8H-RTV40I1Lsp7uKFBTSQFYrmTHXeghX9LX1FBusOVGqM3OhSrtQ=w240-h480-rw">
+                <div>
+                    <div class="name">Scan Flat - PDF & E‑Signature</div>
+                    <div class="desc">Document Scanner</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> New</span>
+                        <span><i class="fa-solid fa-download"></i> 100+</span>
+                    </div>
+                    <div class="chips"><span>OCR</span><span>PDF</span><span>Signature</span></div>
+                </div>
+            </div>
+            <a class="play"
+               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.scan">Google
+                Play</a></div>
+        <div class="card">
+            <div class="left"><img class="icon"
+                                   src="https://play-lh.googleusercontent.com/xmAA029pfdV70j5b1MU6B1KzT71cdiCkyve-DhBfqo91aWKeU8NAV_O0AL_q7aNmNtrAdUsLeRyYbCg3lpJk=w240-h480-rw">
+                <div>
+                    <div class="name">PureSip: Water Tracker</div>
+                    <div class="desc">Hydration companion for healthy habits</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> New</span>
+                        <span><i class="fa-solid fa-download"></i> 50+</span>
+                    </div>
+                    <div class="chips"><span>Health</span><span>Water</span><span>Tracker</span></div>
+                </div>
+            </div>
+            <a class="play"
+               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.watertracker">Google
+                Play</a></div>
+        <div class="card">
+            <div class="left"><img class="icon"
+                                   src="https://play-lh.googleusercontent.com/LlEa1QSlc_XEcT6gfMdSKUgdPsuqD8qfAg8nWpEYOmehZDJZCIaRGHNpb4OGVJbE0k3HixsNaz29VY9XwIk61A=w240-h480-rw">
+                <div>
+                    <div class="name">QR Code Scanner & Generator</div>
+                    <div class="desc">Scan QR & Barcode</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> New</span>
+                        <span><i class="fa-solid fa-download"></i> 50+</span>
+                    </div>
+                    <div class="chips"><span>QR</span><span>Barcode</span><span>Generator</span>
+                    </div>
+                </div>
+            </div>
+            <a class="play"
+               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.qrbarcodestudio">Google
+                Play</a></div>
+        <div class="card">
+            <div class="left"><img class="icon"
+                                   src="https://play-lh.googleusercontent.com/UYn4L3aAoSXjlMtuxBHPKiMQnv8FWBDNGvKri1Wl-W9qut8USYJL1T2zuKbjFl92IgtwPSsGzp3Vi5CEEblwK-Q=w240-h480-rw">
+                <div>
+                    <div class="name">BlinkStretch 20-20-20 Break</div>
+                    <div class="desc">Protect your eyes and collect cute cats</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> New</span>
+                        <span><i class="fa-solid fa-download"></i> 10+</span>
+                    </div>
+                    <div class="chips"><span>Productivity</span><span>Health</span><span>Eyes</span></div>
+                </div>
+            </div>
+            <a class="play"
+               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.blinkstretch">Google
                 Play</a></div>
     </div>
     <footer class="footer">
