@@ -6,91 +6,57 @@
     <title>Ly Hoang Vinh | Android Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        *{box-sizing:border-box}body{margin:0;font-family:Inter,sans-serif;background:#f7f8fc;color:#1b1b1f}
-        .wrap{max-width:980px;margin:auto;padding:56px 20px}
-        .hero{text-align:center;padding:40px 0 60px}
-        .avatar{width:120px;height:120px;border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,.08)}
-        h1{font-size:44px;margin:20px 0 8px}.sub{color:#666}.bio{max-width:620px;margin:20px auto;color:#555;line-height:1.7}
-        .links a{display:inline-block;margin:8px;padding:12px 20px;border-radius:999px;text-decoration:none;background:#6750A4;color:#fff}
-        h2{margin:10px 0 24px;font-size:30px}
-        .grid{display:grid;gap:20px}
-        .card{background:#fff;border-radius:28px;padding:22px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:.25s}
-        .card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.08)}
-        .left{display:flex;gap:18px;align-items:center}
-        .icon{width:72px;height:72px;border-radius:18px}
-        .name{font-size:22px;font-weight:700}
-        .desc{color:#666;margin:6px 0}
-        .chips span{display:inline-block;background:#ede7f6;color:#6750A4;border-radius:999px;padding:5px 10px;font-size:12px;margin:4px 6px 0 0}
-        .play{background:#6750A4;color:#fff;text-decoration:none;padding:12px 18px;border-radius:999px}
-        footer{text-align:center;color:#777;padding:50px 0}
-        @media(max-width:700px){.card{flex-direction:column;align-items:flex-start}.play{margin-top:18px;width:100%;text-align:center}h1{font-size:34px}}
-        .footer{
-    margin-top:80px;
-    padding:48px 20px;
+        :root {
+            --primary: #6750A4;
+            --primary-container: #F4F0FF;
+            --surface: #f7f8fc;
+            --on-surface: #1b1b1f;
+            --outline-variant: rgba(0,0,0,0.08);
+        }
+        *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+        body{margin:0;font-family:'Inter',sans-serif;background:var(--surface);color:var(--on-surface);line-height:1.5}
+        .wrap{max-width:1100px;margin:auto;padding:80px 24px}
+        .hero{text-align:center;padding:60px 0 80px;background: radial-gradient(circle at top, #ececfd 0%, var(--surface) 70%)}
+        .avatar{width:140px;height:140px;border-radius:50%;box-shadow:0 20px 40px rgba(103, 80, 164, 0.15);border: 4px solid #fff}
+        h1{font-size:48px;margin:24px 0 12px;letter-spacing:-0.02em;font-weight:800}
+        .sub{color:#6750A4;font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:0.1em}
+        .bio{max-width:580px;margin:24px auto;color:#555;font-size:18px;line-height:1.7}
+        .links{margin-top:32px}
+        .links a{display:inline-flex;align-items:center;gap:8px;margin:0 8px;padding:14px 28px;border-radius:999px;text-decoration:none;background:var(--primary);color:#fff;font-weight:600;transition:0.3s cubic-bezier(0.2, 0, 0, 1)}
+        .links a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(103, 80, 164, 0.25)}
 
-    text-align:center;
+        h2{margin:60px 0 32px;font-size:32px;font-weight:800;letter-spacing:-0.01em}
+        .grid{display:grid;grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));gap:24px}
+        .card{background:#fff;border-radius:32px;padding:28px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--outline-variant);transition:0.4s cubic-bezier(0.2, 0, 0, 1);position:relative;overflow:hidden}
+        .card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,0.06);border-color:rgba(103, 80, 164, 0.2)}
+        .left{display:flex;gap:20px;align-items:center}
+        .icon{width:88px;height:88px;border-radius:20px;box-shadow: 0 4px 12px rgba(0,0,0,0.05)}
+        .name{font-size:20px;font-weight:700;margin-bottom:4px}
+        .desc{color:#666;font-size:15px;margin-bottom:12px}
+        .chips{display:flex;flex-wrap:wrap;gap:6px}
+        .chips span{background:var(--primary-container);color:var(--primary);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.02em}
+        .play{background:var(--primary-container);color:var(--primary);text-decoration:none;padding:12px 20px;border-radius:16px;font-weight:700;font-size:14px;transition:0.2s}
+        .play:hover{background:var(--primary);color:#fff}
 
-    border-top:1px solid #E7E7E7;
+        .footer{margin-top:120px;padding:60px 0;text-align:center;border-top:1px solid var(--outline-variant)}
+        .footer-content{display:flex;flex-direction:column;align-items:center;gap:24px}
+        .footer-left h3{margin:0;font-size:24px;font-weight:800}
+        .footer-right{display:flex;gap:16px}
+        .footer-right a{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#fff;color:var(--primary);border:1px solid var(--outline-variant);text-decoration:none;font-size:20px;transition:0.3s}
+        .footer-right a:hover{background:var(--primary);color:#fff;transform:translateY(-3px)}
+        .copyright{margin-top:40px;font-size:14px;color:#888}
 
-    color:#5F6368;
-}
-
-.footer-name{
-    font-size:22px;
-    font-weight:700;
-    color:#202124;
-}
-
-.footer-role{
-    margin-top:8px;
-    color:#80868B;
-    font-size:15px;
-}
-
-.footer-links{
-    margin:28px 0;
-
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:14px;
-}
-
-.footer-links a{
-
-    text-decoration:none;
-
-    color:#6750A4;
-
-    background:#F4F0FF;
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    font-weight:600;
-
-    transition:.25s;
-}
-
-.footer-links a:hover{
-
-    background:#6750A4;
-
-    color:white;
-
-    transform:translateY(-2px);
-}
-
-.footer-copy{
-
-    font-size:13px;
-
-    color:#9AA0A6;
-}
+        @media(max-width:1024px){.grid{grid-template-columns:1fr}}
+        @media(max-width:600px){
+            .hero h1{font-size:36px}
+            .card{flex-direction:column;align-items:flex-start;gap:20px;padding:24px}
+            .play{width:100%;text-align:center}
+            .avatar{width:110px;height:110px}
+        }
     </style>
 </head>
 <body>
@@ -102,12 +68,24 @@
         <p class="bio">Building polished Android applications focused on performance, usability and
             Material Design.</p>
         <div class="links">
-            <a href="https://github.com/LyHoangVinh">GitHub</a>
-            <a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/">LinkedIn</a>
+            <a href="https://github.com/LyHoangVinh"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
         </div>
     </section>
     <h2>Published Apps</h2>
     <div class="grid">
+        <div class="card">
+            <div class="left"><img class="icon"
+                                   src="https://play-lh.googleusercontent.com/UYn4L3aAoSXjlMtuxBHPKiMQnv8FWBDNGvKri1Wl-W9qut8USYJL1T2zuKbjFl92IgtwPSsGzp3Vi5CEEblwK-Q=w240-h480-rw">
+                <div>
+                    <div class="name">BlinkStretch 20-20-20 Break</div>
+                    <div class="desc">Protect your eyes and collect cute cats</div>
+                    <div class="chips"><span>Productivity</span><span>Health</span><span>Eyes</span></div>
+                </div>
+            </div>
+            <a class="play"
+               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.blinkstretch">Google
+                Play</a></div>
         <div class="card">
             <div class="left"><img class="icon"
                                    src="https://play-lh.googleusercontent.com/xmAA029pfdV70j5b1MU6B1KzT71cdiCkyve-DhBfqo91aWKeU8NAV_O0AL_q7aNmNtrAdUsLeRyYbCg3lpJk=w240-h480-rw">
