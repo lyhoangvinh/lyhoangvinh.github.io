@@ -16,225 +16,326 @@
             --surface: #f7f8fc;
             --on-surface: #1b1b1f;
             --outline-variant: rgba(0,0,0,0.08);
+            --card-bg: #ffffff;
         }
-        *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
-        body{margin:0;font-family:'Inter',sans-serif;background:var(--surface);color:var(--on-surface);line-height:1.5}
-        .wrap{max-width:1100px;margin:auto;padding:80px 24px}
-        .hero{text-align:center;padding:60px 0 80px;background: radial-gradient(circle at top, #ececfd 0%, var(--surface) 70%)}
-        .avatar{width:140px;height:140px;border-radius:50%;box-shadow:0 20px 40px rgba(103, 80, 164, 0.15);border: 4px solid #fff}
-        h1{font-size:48px;margin:24px 0 12px;letter-spacing:-0.02em;font-weight:800}
-        .sub{color:#6750A4;font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:0.1em}
-        .bio{max-width:580px;margin:24px auto;color:#555;font-size:18px;line-height:1.7}
-        .links{margin-top:32px; display:flex; justify-content:center; flex-wrap:wrap; gap:12px}
-        .links a{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:999px;text-decoration:none;background:var(--primary);color:#fff;font-weight:600;transition:0.3s cubic-bezier(0.2, 0, 0, 1)}
-        .links a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(103, 80, 164, 0.25)}
 
-        h2{margin:60px 0 32px;font-size:32px;font-weight:800;letter-spacing:-0.01em}
-        .grid{display:grid;grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));gap:24px}
-        .card{background:#fff;border-radius:32px;padding:28px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--outline-variant);transition:0.4s cubic-bezier(0.2, 0, 0, 1);position:relative;overflow:hidden}
-        .card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,0.06);border-color:rgba(103, 80, 164, 0.2)}
-        .left{display:flex;gap:20px;align-items:center}
-        .icon{width:88px;height:88px;border-radius:20px;box-shadow: 0 4px 12px rgba(0,0,0,0.05)}
-        .name{font-size:20px;font-weight:700;margin-bottom:4px}
-        .desc{color:#666;font-size:15px;margin-bottom:8px}
-        .stats{display:flex;gap:14px;margin-bottom:12px;font-size:13px;font-weight:600;color:#555;align-items:center}
-        .stats span{display:flex;align-items:center;gap:4px}
+        [data-theme="dark"] {
+            --surface: #121212;
+            --on-surface: #e1e1e1;
+            --card-bg: #1e1e1e;
+            --outline-variant: rgba(255,255,255,0.1);
+            --primary-container: #2d2a3d;
+        }
+
+        *{box-sizing:border-box;-webkit-font-smoothing:antialiased}
+        body{margin:0;font-family:'Inter',sans-serif;background:var(--surface);color:var(--on-surface);line-height:1.5;transition: background 0.3s, color 0.3s}
+        .wrap{max-width:1200px;margin:auto;padding:40px 24px}
+
+        .header-controls { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 100; }
+        .theme-toggle { background: var(--card-bg); border: 1px solid var(--outline-variant); color: var(--on-surface); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items:center; justify-content:center; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .theme-toggle:hover { transform: scale(1.1); background: var(--primary); color: #fff; }
+
+        .hero{text-align:center;padding:100px 0 80px;background: radial-gradient(circle at top, var(--primary-container) 0%, var(--surface) 80%)}
+        .avatar{width:140px;height:140px;border-radius:50%;box-shadow:0 20px 40px rgba(103, 80, 164, 0.15);border: 4px solid #fff}
+        h1{font-size:56px;margin:24px 0 12px;letter-spacing:-0.03em;font-weight:800}
+        .sub{color:#6750A4;font-weight:600;font-size:18px;text-transform:uppercase;letter-spacing:0.15em}
+        .bio{max-width:600px;margin:24px auto;color:#666;font-size:19px;line-height:1.6}
+
+        .links{margin-top:32px; display:flex; justify-content:center; flex-wrap:wrap; gap:12px}
+        .links a{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:999px;text-decoration:none;background:var(--primary);color:#fff;font-weight:700;font-size:16px;transition:0.3s cubic-bezier(0.2, 0, 0, 1)}
+        .links a:hover{transform:translateY(-4px);box-shadow:0 12px 24px rgba(103, 80, 164, 0.3)}
+
+        .filter-tabs { display: flex; justify-content: center; gap: 10px; margin: 40px 0 40px; flex-wrap: wrap; }
+        .tab { padding: 12px 28px; border-radius: 999px; border: 1px solid var(--outline-variant); background: var(--card-bg); color: var(--on-surface); cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .tab.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 12px rgba(103, 80, 164, 0.2); }
+
+        h2{margin:60px 0 32px;font-size:36px;font-weight:800;letter-spacing:-0.02em;text-align: center;}
+
+        .grid{display:grid;grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));gap:32px}
+
+        .card{background:var(--card-bg);border-radius:32px;padding:32px;display:flex;flex-direction:column;gap:24px;border:1px solid var(--outline-variant);transition:0.4s cubic-bezier(0.2, 0, 0, 1);position:relative;overflow:hidden; height: 100%;}
+        .card:hover{transform:translateY(-10px);box-shadow:0 32px 64px rgba(0,0,0,0.1);border-color:rgba(103, 80, 164, 0.3)}
+
+        .card-top { display: flex; gap: 20px; align-items: center; }
+        .icon{width:88px;height:88px;border-radius:20px;box-shadow: 0 8px 16px rgba(0,0,0,0.08)}
+        .name{font-size:22px;font-weight:700;margin-bottom:4px}
+
+        .card-body { flex-grow: 1; }
+        .desc{color:#666;font-size:15px;margin-bottom:16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.6;}
+
+        .stats{display:flex;gap:16px;margin-bottom:20px;font-size:14px;font-weight:700;color:var(--on-surface);opacity: 0.9}
+        .stats span{display:flex;align-items:center;gap:6px}
         .stats i.fa-star{color:#FFB300}
         .stats i.fa-download{color:#00C853}
-        .chips{display:flex;flex-wrap:wrap;gap:6px}
-        .chips span{background:var(--primary-container);color:var(--primary);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.02em}
-        .play{background:var(--primary-container);color:var(--primary);text-decoration:none;padding:12px 20px;border-radius:16px;font-weight:700;font-size:14px;transition:0.2s}
-        .play:hover{background:var(--primary);color:#fff}
+
+        .card-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--outline-variant); }
+        .chips{display:flex;flex-wrap:wrap;gap:8px}
+        .chips span{background:var(--primary-container);color:var(--primary);border-radius:10px;padding:6px 14px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing: 0.05em;}
+
+        .play{background:var(--primary);color:#fff;text-decoration:none;padding:12px 28px;border-radius:16px;font-weight:700;font-size:14px;transition:0.3s; box-shadow: 0 4px 12px rgba(103, 80, 164, 0.2);}
+        .play:hover{transform: scale(1.05); filter: brightness(1.1); box-shadow: 0 6px 16px rgba(103, 80, 164, 0.3);}
 
         .badge {
             position: absolute;
-            top: 12px;
-            right: -30px;
-            background: #FFD700;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #000;
-            padding: 4px 40px;
-            font-size: 10px;
-            font-weight: 800;
+            padding: 6px 45px;
+            font-size: 11px;
+            font-weight: 900;
             transform: rotate(45deg);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        .footer{margin-top:120px;padding:60px 0;text-align:center;border-top:1px solid var(--outline-variant)}
-        .footer-content{display:flex;flex-direction:column;align-items:center;gap:24px}
-        .footer-left h3{margin:0;font-size:24px;font-weight:800}
-        .footer-right{display:flex;gap:16px}
-        .footer-right a{width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:#fff;color:var(--primary);border:1px solid var(--outline-variant);text-decoration:none;font-size:20px;transition:0.3s}
-        .footer-right a:hover{background:var(--primary);color:#fff;transform:translateY(-3px)}
-        .copyright{margin-top:40px;font-size:14px;color:#888}
+        .footer{margin-top:120px;padding:100px 0;text-align:center;border-top:1px solid var(--outline-variant);background: var(--card-bg)}
+        .footer-content{display:flex;flex-direction:column;align-items:center;gap:40px}
+        .footer-left h3{margin:0;font-size:32px;font-weight:800}
+        .footer-right{display:flex;gap:24px}
+        .footer-right a{width:60px;height:60px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--surface);color:var(--primary);border:1px solid var(--outline-variant);text-decoration:none;font-size:26px;transition:0.3s}
+        .footer-right a:hover{background:var(--primary);color:#fff;transform:translateY(-8px) rotate(8deg); box-shadow: 0 12px 24px rgba(103, 80, 164, 0.2);}
+        .copyright{margin-top:60px;font-size:15px;color:#888; font-weight: 500;}
 
-        @media(max-width:1024px){.grid{grid-template-columns:1fr}}
-        @media(max-width:600px){
-            .hero h1{font-size:36px}
-            .card{flex-direction:column;align-items:flex-start;gap:20px;padding:24px}
-            .play{width:100%;text-align:center}
-            .avatar{width:110px;height:110px}
+        @media(max-width:768px){
+            .grid{grid-template-columns:1fr}
+            h1{font-size:44px}
+            .hero{padding:80px 0 60px}
+            .wrap{padding:20px 16px}
         }
     </style>
 </head>
 <body>
-<div class="wrap">
-    <section class="hero">
-        <img class="avatar" src="https://avatars.githubusercontent.com/u/29915177?v=4">
-        <h1>Ly Hoang Vinh</h1>
-        <div class="sub">Android Engineer</div>
-        <p class="bio">Building polished Android applications focused on performance, usability and
-            Material Design.</p>
-        <div class="links">
-            <a href="https://github.com/LyHoangVinh"><i class="fa-brands fa-github"></i> GitHub</a>
-            <a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    <div class="header-controls">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div class="wrap">
+        <section class="hero">
+            <img class="avatar" src="https://avatars.githubusercontent.com/u/29915177?v=4">
+            <h1>Ly Hoang Vinh</h1>
+            <div class="sub">Android Engineer</div>
+            <p class="bio">Crafting premium Android experiences with a focus on performance, Material Design, and user-centric utilities.</p>
+            <div class="links">
+                <a href="https://github.com/LyHoangVinh"><i class="fa-brands fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </section>
+
+        <h2>Digital Products</h2>
+
+        <div class="filter-tabs">
+            <div class="tab active" onclick="filterApps('all')">All Products</div>
+            <div class="tab" onclick="filterApps('tool')">Tools</div>
+            <div class="tab" onclick="filterApps('health')">Health</div>
+            <div class="tab" onclick="filterApps('lifestyle')">Lifestyle</div>
+            <div class="tab" onclick="filterApps('game')">Games</div>
         </div>
-    </section>
-    <h2>Published Apps</h2>
-    <div class="grid">
-        <div class="card">
-            <div class="badge">Popular</div>
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/xloc1zhO4YZjEYtxjjjgN13vupogovXrixCHSvBefT5NU9RCui2fxAKPQMcmZErgkZDHx1JCgN0aYduQos3aqw=w240-h480-rw">
-                <div>
+
+        <div class="grid" id="appGrid">
+            <!-- Hex to Text -->
+            <div class="card" data-category="tool">
+                <div class="badge">Popular</div>
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/xloc1zhO4YZjEYtxjjjgN13vupogovXrixCHSvBefT5NU9RCui2fxAKPQMcmZErgkZDHx1JCgN0aYduQos3aqw=w240-h480-rw">
                     <div class="name">Hex to Text Converter</div>
-                    <div class="desc">Developer Utility</div>
+                </div>
+                <div class="card-body">
+                    <div class="desc">A powerful utility for developers to quickly convert between Hex, Text, and ASCII formats.</div>
                     <div class="stats">
                         <span><i class="fa-solid fa-star"></i> 5.0</span>
                         <span><i class="fa-solid fa-download"></i> 10K+</span>
                     </div>
-                    <div class="chips"><span>Hex</span><span>ASCII</span><span>UTF</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="chips"><span>Dev Tools</span></div>
+                    <a class="play" href="https://play.google.com/store/apps/details?id=com.vinh.hextotext">View App</a>
                 </div>
             </div>
-            <a class="play" href="https://play.google.com/store/apps/details?id=com.vinh.hextotext">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/x9tXDfbhps7ZLgUpbVXCxWVMP47L_OOS5F8lDAW7u9HI3xF1O10r9h_hByrzL_yplS9n8afxw8G6-y1mWGjOwA=w240-h480-rw">
-                <div>
+
+            <!-- Image to Text -->
+            <div class="card" data-category="tool">
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/YkcELhVHhZ1YWJdF-lVM-311T2gEh7mhj2sgLmJsxO8TnL2S6I10rH3Y4Uzf-TUH9I0FF8gH5FKeoknDW-bQ=w240-h480-rw">
+                    <div class="name">Image to Text - Fast OCR</div>
+                </div>
+                <div class="card-body">
+                    <div class="desc">Accurate and fast offline OCR converter. Easily digitize your physical documents.</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> New</span>
+                        <span><i class="fa-solid fa-download"></i> New</span>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <div class="chips"><span>OCR</span><span>Utility</span></div>
+                    <a class="play" href="https://play.google.com/store/apps/details?id=com.vinh.imagetotext">View App</a>
+                </div>
+            </div>
+
+            <!-- Freaking Math Plus -->
+            <div class="card" data-category="game">
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/x9tXDfbhps7ZLgUpbVXCxWVMP47L_OOS5F8lDAW7u9HI3xF1O10r9h_hByrzL_yplS9n8afxw8G6-y1mWGjOwA=w240-h480-rw">
                     <div class="name">Freaking Math Plus</div>
-                    <div class="desc">Brain Game</div>
+                </div>
+                <div class="card-body">
+                    <div class="desc">Challenging math puzzles to sharpen your brain. Simple, addictive, and fun!</div>
                     <div class="stats">
                         <span><i class="fa-solid fa-star"></i> 4.8</span>
                         <span><i class="fa-solid fa-download"></i> 100+</span>
                     </div>
-                    <div class="chips"><span>Game</span><span>Math</span><span>Puzzle</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="chips"><span>Game</span><span>Math</span></div>
+                    <a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.gamemath">View App</a>
                 </div>
             </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.gamemath">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/7hcUIS-ViNjuE0Ynwz0vNPu9xcotZO3cjT8H-RTV40I1Lsp7uKFBTSQFYrmTHXeghX9LX1FBusOVGqM3OhSrtQ=w240-h480-rw">
-                <div>
-                    <div class="name">Scan Flat - PDF & E‑Signature</div>
-                    <div class="desc">Document Scanner</div>
+
+            <!-- Scan Flat -->
+            <div class="card" data-category="tool">
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/7hcUIS-ViNjuE0Ynwz0vNPu9xcotZO3cjT8H-RTV40I1Lsp7uKFBTSQFYrmTHXeghX9LX1FBusOVGqM3OhSrtQ=w240-h480-rw">
+                    <div class="name">Scan Flat - PDF Scanner</div>
+                </div>
+                <div class="card-body">
+                    <div class="desc">Convert documents to high-quality PDF files. Includes OCR and E-Signature.</div>
                     <div class="stats">
                         <span><i class="fa-solid fa-star"></i> New</span>
                         <span><i class="fa-solid fa-download"></i> 100+</span>
                     </div>
-                    <div class="chips"><span>OCR</span><span>PDF</span><span>Signature</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="chips"><span>PDF</span><span>Business</span></div>
+                    <a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.scan">View App</a>
                 </div>
             </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.scan">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/xmAA029pfdV70j5b1MU6B1KzT71cdiCkyve-DhBfqo91aWKeU8NAV_O0AL_q7aNmNtrAdUsLeRyYbCg3lpJk=w240-h480-rw">
-                <div>
-                    <div class="name">PureSip: Water Tracker</div>
-                    <div class="desc">Hydration companion for healthy habits</div>
-                    <div class="stats">
-                        <span><i class="fa-solid fa-star"></i> New</span>
-                        <span><i class="fa-solid fa-download"></i> 50+</span>
-                    </div>
-                    <div class="chips"><span>Health</span><span>Water</span><span>Tracker</span></div>
+
+            <!-- Meowake -->
+            <div class="card" data-category="lifestyle">
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/T3paXQ3bPGQHVv4fgwDT6BAWSUvQWdVs3d4K7QbHuHoJXigob0RXWvq8duKUAdJTjk5H5bvLTL3b628zLwfaprE=w240-h480-rw">
+                    <div class="name">Meowake: Math Alarm</div>
                 </div>
-            </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.watertracker">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/LlEa1QSlc_XEcT6gfMdSKUgdPsuqD8qfAg8nWpEYOmehZDJZCIaRGHNpb4OGVJbE0k3HixsNaz29VY9XwIk61A=w240-h480-rw">
-                <div>
-                    <div class="name">QR Code Scanner & Generator</div>
-                    <div class="desc">Scan QR & Barcode</div>
-                    <div class="stats">
-                        <span><i class="fa-solid fa-star"></i> New</span>
-                        <span><i class="fa-solid fa-download"></i> 50+</span>
-                    </div>
-                    <div class="chips"><span>QR</span><span>Barcode</span><span>Generator</span>
-                    </div>
-                </div>
-            </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.qrbarcodestudio">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/UYn4L3aAoSXjlMtuxBHPKiMQnv8FWBDNGvKri1Wl-W9qut8USYJL1T2zuKbjFl92IgtwPSsGzp3Vi5CEEblwK-Q=w240-h480-rw">
-                <div>
-                    <div class="name">BlinkStretch 20-20-20 Break</div>
-                    <div class="desc">Protect your eyes and collect cute cats</div>
-                    <div class="stats">
-                        <span><i class="fa-solid fa-star"></i> New</span>
-                        <span><i class="fa-solid fa-download"></i> 10+</span>
-                    </div>
-                    <div class="chips"><span>Productivity</span><span>Health</span><span>Eyes</span></div>
-                </div>
-            </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.blinkstretch">Google
-                Play</a></div>
-        <div class="card">
-            <div class="left"><img class="icon"
-                                   src="https://play-lh.googleusercontent.com/T3paXQ3bPGQHVv4fgwDT6BAWSUvQWdVs3d4K7QbHuHoJXigob0RXWvq8duKUAdJTjk5H5bvLTL3b628zLwfaprE=w240-h480-rw">
-                <div>
-                    <div class="name">Meowake: Cute Math Alarm</div>
-                    <div class="desc">Wake up happy with cute cats and math!</div>
+                <div class="card-body">
+                    <div class="desc">A cute and smart alarm clock that helps you wake up by solving math with cats.</div>
                     <div class="stats">
                         <span><i class="fa-solid fa-star"></i> 5.0</span>
                         <span><i class="fa-solid fa-download"></i> New</span>
                     </div>
-                    <div class="chips"><span>Lifestyle</span><span>Utility</span><span>Alarm</span></div>
+                </div>
+                <div class="card-bottom">
+                    <div class="chips"><span>Lifestyle</span><span>Utility</span></div>
+                    <a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.meowake">View App</a>
                 </div>
             </div>
-            <a class="play"
-               href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.meowake">Google
-                Play</a></div>
+
+            <!-- PureSip -->
+            <div class="card" data-category="health">
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/xmAA029pfdV70j5b1MU6B1KzT71cdiCkyve-DhBfqo91aWKeU8NAV_O0AL_q7aNmNtrAdUsLeRyYbCg3lpJk=w240-h480-rw">
+                    <div class="name">PureSip: Water Tracker</div>
+                </div>
+                <div class="card-body">
+                    <div class="desc">Track your daily water intake and stay hydrated with smart, timely notifications.</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> New</span>
+                        <span><i class="fa-solid fa-download"></i> 50+</span>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <div class="chips"><span>Health</span><span>Water</span></div>
+                    <a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.watertracker">View App</a>
+                </div>
+            </div>
+
+            <!-- QR Code -->
+            <div class="card" data-category="tool">
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/LlEa1QSlc_XEcT6gfMdSKUgdPsuqD8qfAg8nWpEYOmehZDJZCIaRGHNpb4OGVJbE0k3HixsNaz29VY9XwIk61A=w240-h480-rw">
+                    <div class="name">QR Code Studio</div>
+                </div>
+                <div class="card-body">
+                    <div class="desc">Minimalist and fast QR & Barcode scanner and generator with easy sharing.</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> New</span>
+                        <span><i class="fa-solid fa-download"></i> 50+</span>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <div class="chips"><span>QR</span><span>Utility</span></div>
+                    <a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.qrbarcodestudio">View App</a>
+                </div>
+            </div>
+
+            <!-- BlinkStretch -->
+            <div class="card" data-category="health">
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/UYn4L3aAoSXjlMtuxBHPKiMQnv8FWBDNGvKri1Wl-W9qut8USYJL1T2zuKbjFl92IgtwPSsGzp3Vi5CEEblwK-Q=w240-h480-rw">
+                    <div class="name">BlinkStretch 20-20-20</div>
+                </div>
+                <div class="card-body">
+                    <div class="desc">Take breaks to protect your vision. Based on the 20-20-20 health rule.</div>
+                    <div class="stats">
+                        <span><i class="fa-solid fa-star"></i> New</span>
+                        <span><i class="fa-solid fa-download"></i> 10+</span>
+                    </div>
+                </div>
+                <div class="card-bottom">
+                    <div class="chips"><span>Health</span><span>Productivity</span></div>
+                    <a class="play" href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.blinkstretch">View App</a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Ly Hoang Vinh</h3>
+                    <p>Dedicated to building meaningful Android applications.</p>
+                </div>
+                <div class="footer-right">
+                    <a href="mailto:vinh270795@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://github.com/LyHoangVinh" target="_blank"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="copyright">Designed & Built by Ly Hoang Vinh &bull; 2026</div>
+        </footer>
     </div>
-    <footer class="footer">
-        <div class="footer-content">
 
-            <div class="footer-left">
-                <h3>Ly Hoang Vinh</h3>
-                <p>Building Android apps for Google Play.</p>
-            </div>
+    <script>
+        function filterApps(category) {
+            const cards = document.querySelectorAll('.card');
+            const tabs = document.querySelectorAll('.tab');
 
-            <div class="footer-right">
-                <a href="mailto:vinh270795@gmail.com" title="Email">
-                    <i class="fa-regular fa-envelope"></i>
-                </a>
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.innerText.toLowerCase().includes(category)) tab.classList.add('active');
+                if (category === 'all' && tab.innerText.includes('All')) tab.classList.add('active');
+            });
 
-                <a href="https://github.com/LyHoangVinh" target="_blank">
-                    <i class="fa-brands fa-github"></i>
-                </a>
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
 
-                <a href="https://www.linkedin.com/in/l%C3%BD-ho%C3%A0ng-vinh-a6201715b/" target="_blank">
-                    <i class="fa-brands fa-linkedin"></i>
-                </a>
-            </div>
-
-        </div>
-
-        <div class="copyright">
-            Designed & Built by Ly Hoang Vinh
-        </div>
-    </footer>
-</div>
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.querySelector('.theme-toggle i');
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+            }
+        }
+    </script>
 </body>
 </html>
