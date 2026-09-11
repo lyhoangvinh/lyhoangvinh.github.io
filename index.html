@@ -82,7 +82,8 @@
 
         /* Dashboard Stats */
         .stats-strip { display: flex; gap: 40px; margin-bottom: 80px; padding: 32px; background: var(--card-bg); border-radius: 32px; border: 1px solid var(--outline); }
-        .stat-item { flex: 1; text-align: center; }
+        .stat-item { flex: 1; text-align: center; border-right: 1px solid var(--outline); }
+        .stat-item:last-child { border-right: none; }
         .stat-value { font-size: 32px; font-weight: 800; color: var(--on-surface); }
         .stat-label { font-size: 14px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
 
@@ -129,6 +130,10 @@
         .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--outline); pt: 20px; }
         .btn-play { background: var(--primary); color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 20px; font-weight: 700; font-size: 15px; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
         .btn-play:hover { background: #553f8f; transform: scale(1.05); }
+
+        .search-box { background: var(--primary-container); padding: 8px 16px; border-radius: 16px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--outline); }
+        .search-box input { border: none; background: none; outline: none; color: var(--primary); font-weight: 600; font-family: inherit; width: 150px; }
+        .search-box i { color: var(--primary); font-size: 14px; }
 
         .popular-badge {
             position: absolute;
@@ -197,7 +202,7 @@
 
         <div class="stats-strip">
             <div class="stat-item">
-                <div class="stat-value">10+</div>
+                <div class="stat-value">11+</div>
                 <div class="stat-label">Live Apps</div>
             </div>
             <div class="stat-item">
@@ -216,16 +221,45 @@
 
         <div class="section-header">
             <h2>Projects.</h2>
-            <div class="filter-tabs">
-                <div class="tab active" onclick="filterApps('all')">All</div>
-                <div class="tab" onclick="filterApps('tool')">Tools</div>
-                <div class="tab" onclick="filterApps('health')">Health</div>
-                <div class="tab" onclick="filterApps('lifestyle')">Lifestyle</div>
-                <div class="tab" onclick="filterApps('game')">Games</div>
+            <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="appSearch" aria-label="Search apps" placeholder="Search apps..." onkeyup="filterAndSearch()">
+                </div>
+                <div class="filter-tabs">
+                    <div class="tab active" onclick="setCategory('all')">All</div>
+                    <div class="tab" onclick="setCategory('tool')">Tools</div>
+                    <div class="tab" onclick="setCategory('health')">Health</div>
+                    <div class="tab" onclick="setCategory('lifestyle')">Lifestyle</div>
+                    <div class="tab" onclick="setCategory('game')">Games</div>
+                </div>
             </div>
         </div>
 
         <div class="grid" id="appGrid">
+            <!-- Pose & Angle -->
+            <div class="card" data-category="tool">
+                <div class="card-top">
+                    <img class="icon" src="https://play-lh.googleusercontent.com/m_nk_p_QBXg1HQeW64f7wU8ucK_MXU4eGVWL8llw-GuM8JDTks7ilPBd19LP_Mfaq3b1VzU0GJcDkgMKxo5R=w240-h480-rw">
+                    <div class="card-meta">
+                        <div class="name">Pose & Angle</div>
+                        <span class="category-tag">Photography</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="desc">Improve your photography with real-time camera guidance and pose detection technology.</p>
+                    <div class="stats-row">
+                        <div class="stat"><i class="fa-solid fa-star"></i> New</div>
+                        <div class="stat"><i class="fa-solid fa-download"></i> 0+</div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="https://play.google.com/store/apps/details?id=com.lyhoangvinh.poseangle" class="btn-play">
+                        Play Store <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+            </div>
+
             <!-- Popular App -->
             <div class="card" data-category="tool">
                 <div class="popular-badge">Popular</div>
@@ -465,18 +499,33 @@
     </div>
 
     <script>
-        function filterApps(category) {
+        let currentCategory = 'all';
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            filterAndSearch();
+        }
+
+        function filterAndSearch() {
+            const searchText = document.getElementById('appSearch').value.toLowerCase();
             const cards = document.querySelectorAll('.card');
             const tabs = document.querySelectorAll('.tab');
 
+            // Update Tabs
             tabs.forEach(tab => {
                 tab.classList.remove('active');
-                if (tab.innerText.toLowerCase().includes(category)) tab.classList.add('active');
-                if (category === 'all' && tab.innerText.includes('All')) tab.classList.add('active');
+                if (tab.innerText.toLowerCase().includes(currentCategory)) tab.classList.add('active');
+                if (currentCategory === 'all' && tab.innerText.includes('All')) tab.classList.add('active');
             });
 
             cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
+                const name = card.querySelector('.name').innerText.toLowerCase();
+                const category = card.getAttribute('data-category');
+
+                const matchesCategory = currentCategory === 'all' || category === currentCategory;
+                const matchesSearch = name.includes(searchText);
+
+                if (matchesCategory && matchesSearch) {
                     card.style.display = 'flex';
                     card.style.animation = 'fadeIn 0.5s ease forwards';
                 } else {
