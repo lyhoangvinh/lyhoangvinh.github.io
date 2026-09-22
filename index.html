@@ -175,8 +175,8 @@
 
         .hero-grid {
           display: grid;
-          grid-template-columns: 1.35fr .65fr;
-          gap: 70px;
+          grid-template-columns: 1fr auto;
+          gap: 40px;
           align-items: center;
         }
 
@@ -259,41 +259,39 @@
           color: var(--text);
         }
 
-        .profile-card {
+        .profile-area {
           position: relative;
-          padding: 18px;
-          border: 1px solid var(--border);
-          border-radius: 28px;
-          background: var(--surface);
-          box-shadow: var(--shadow);
-          transform: rotate(2deg);
-        }
-
-        .profile-card img {
-          display: block;
-          width: 100%;
-          aspect-ratio: 1;
-          object-fit: cover;
-          border-radius: 20px;
-          background: var(--surface-soft);
-        }
-
-        .profile-caption {
           display: flex;
-          justify-content: space-between;
-          gap: 12px;
+          flex-direction: column;
           align-items: center;
-          padding: 16px 4px 2px;
+          gap: 12px;
         }
 
-        .profile-caption strong {
+        .avatar-simple {
+          width: 120px;
+          height: 120px;
+          object-fit: cover;
+          border-radius: 50%;
+          border: 1px solid var(--border);
+          padding: 4px;
+          background: var(--surface);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .profile-info {
+          text-align: center;
+          opacity: 0.8;
+        }
+
+        .profile-info strong {
+          display: block;
+          font-size: 13px;
           font-family: "Plus Jakarta Sans", sans-serif;
-          font-size: 14px;
         }
 
-        .profile-caption span {
+        .profile-info span {
+          font-size: 11px;
           color: var(--muted);
-          font-size: 12px;
         }
 
         /* Stats */
@@ -748,9 +746,9 @@
           .featured,
           .engineering { grid-template-columns: 1fr; }
 
-          .profile-card {
-            width: min(310px, 70%);
-            margin: 0 auto;
+          .profile-area {
+            order: -1;
+            margin-bottom: 20px;
           }
 
           .focus-grid { grid-template-columns: repeat(2, 1fr); }
@@ -879,10 +877,9 @@
                 </div>
             </div>
 
-            <div class="profile-card">
-                <img src="https://github.com/lyhoangvinh.png" alt="Ly Hoang Vinh GitHub profile"
-                     width="300" height="380">
-                <div class="profile-caption">
+            <div class="profile-area">
+                <img src="https://github.com/lyhoangvinh.png" alt="Ly Hoang Vinh" class="avatar-simple">
+                <div class="profile-info">
                     <strong>Android Developer</strong>
                     <span>Kotlin · Compose</span>
                 </div>
